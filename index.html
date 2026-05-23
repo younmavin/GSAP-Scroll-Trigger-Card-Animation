@@ -1,422 +1,453 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
+      * {
+        margin: 0;
+        padding: 0;
+      }
+
+      @font-face {
+        font-family: 'OngleipKonkon';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      @font-face {
+        font-family: 'HsSaemaul';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSSaemaul-Regular.woff') format('woff');
+        font-weight: normal;
+        font-display: swap;
+      }
+
+      body {
+        font-family: 'OngleipKonkon';
+        font-size: 25px;
+        line-height: 1.6;
+        font-weight: 300;
+        overflow-x: hidden;
+      }
+
+      section {
+        height: 100vh;
+      }
+
+      .horizontal-sliders {
+        display: flex;
+        align-items: center;
+        flex-wrap: no-wrap;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        max-height: 100vh !important;
+        width: 100%;
+        background: url(./img/bg.jpg);
+        background-position: center center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+        border: none;
+        z-index: 2;
+        position: relative;
+      }
+
+      .obj-bx .obj01 {
+        position: absolute;
+        top: 84%;
+        left: 12%;
+        transform: translate(-50%, -50%);
+      }
+
+      .obj-bx .obj02 {
+        position: absolute;
+        top: 30%;
+        left: 4%;
+        transform: translate(-50%, -50%);
+      }
+
+      .obj-bx .obj03 {
+        width: 200px;
+        position: absolute;
+        top: 10%;
+        left: 15%;
+        transform: translate(-50%, -50%);
+        filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%);
+      }
+
+      .horizontal-sliders .item-slide {
+        width: 400px;
+        min-width: 400px;
+      }
+
+      .horizontal-sliders .item-text {
+        border: none;
+        display: flex;
+        align-items: center;
+        margin-left: 15vw;
+        margin-right: 10vw;
+        width: 400px;
+        min-width: 400px;
+        position: relative;
+      }
+
+      .horizontal-sliders .item-text .obj {
+        position: absolute;
+        top: -15%;
+        left: 15%;
+        transform: translate(-50%, -50%);
+      }
+
+      .horizontal-sliders .item-text dl {
+        z-index: 1;
+      }
+
+      .horizontal-sliders .item-text dl dt {
+        font-size: 60px;
+        font-family: 'HsSaemaul';
+        line-height: 1;
+        margin-bottom: 30px;
+      }
+
+      .horizontal-sliders .item-text dl dd {
+        word-break: keep-all;
+        text-wrap: balance;
+      }
+
+      .horizontal-sliders .item-text dl .btn-git {
+      }
+
+      .horizontal-sliders .item-card {
+        position: relative;
+        will-change: transform;
+        margin-right: 150px;
+      }
+
+      .horizontal-sliders .item-card.active .item-inner {
+        transform-origin: 50% 0%;
+        animation-name: shake;
+        animation-duration: 1.5s;
+        animation-iteration-count: 1;
+      }
+
+      .horizontal-sliders .item-card .deco {
+        position: absolute;
+        top: -30px;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 80px;
+        z-index: 1;
+      }
+
+      .horizontal-sliders .item-card .item-inner {
+        width: 100%;
+        height: 380px;
+        background: #fff;
+        box-shadow: 0 10px 6px -6px #777;
+        border-radius: 5px;
+        padding: 3% 3% 0 3%;
+      }
+
+      .horizontal-sliders .item-card .item-inner .thumb {
+        height: 220px;
+        overflow: hidden;
+        box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px inset;
+        background-position: center center;
+        cursor: pointer;
+        transition: 0.4s;
+        background-size: 120%;
+      }
+
+      .horizontal-sliders .item-card:hover .item-inner .thumb {
+        background-size: 130%;
+      }
+
+      .horizontal-sliders .item-card:nth-child(odd) {
+        margin-top: -100px;
+      }
+
+      .horizontal-sliders .item-card {
+        margin-top: 100px;
+      }
+
+      .horizontal-sliders .item-card .item-inner .txt-bx {
+        margin-top: 20px;
+        padding: 0 10px;
+        box-sizing: border-box;
+      }
+
+      .horizontal-sliders .item-card .item-inner .txt-bx h6 {
+        font-size: 16px;
+      }
+
+      .horizontal-sliders .item-card .item-inner .txt-bx a {
+        width: 100px;
+        display: block;
+        text-decoration: none;
+        color: #000;
+        position: relative;
+        /* float: right; */
+        margin-top: 10px;
+      }
+
+      .horizontal-sliders .item-card .item-inner .txt-bx a span {
+        display: block;
+        position: absolute;
+        top: 55%;
+        left: 55%;
+        transform: translate(-50%, -50%);
+        font-size: 15px;
+        white-space: nowrap;
+      }
+
+      .horizontal-sliders .item-card .item-inner .txt-bx a img {
+        width: 100%;
+        display: block;
+        filter: invert(18%) sepia(19%) saturate(6%) hue-rotate(74deg) brightness(98%) contrast(94%);
+      }
+
+      .horizontal-sliders .item-card .txt-bx p {
+        position: relative;
+        z-index: 1;
+        width: fit-content;
+      }
+
+      .horizontal-sliders .item-card .txt-bx p::after {
+        content: '';
+        background: linear-gradient(to bottom, transparent 55%, #f8cd2fb7 55%, #f8cd2fb7);
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 30px;
+        z-index: -1;
+        width: 0;
+        transition: 0.5s;
+      }
+
+      .horizontal-sliders .item-card:hover .txt-bx p::after {
+        width: 100%;
+      }
+
+      .horizontal-sliders .item-card:hover .txt-bx a img {
+        filter: invert(84%) sepia(88%) saturate(6201%) hue-rotate(325deg) brightness(95%) contrast(106%);
+      }
+
+      .sec02 {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: rotate(0deg);
         }
 
-        @font-face {
-            font-family: 'OngleipKonkon';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/2412-1@1.0/Ownglyph_corncorn-Rg.woff2') format('woff2');
-            font-weight: normal;
-            font-display: swap;
+        10% {
+          transform: rotate(15deg);
         }
 
-        @font-face {
-            font-family: 'HsSaemaul';
-            src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/HSSaemaul-Regular.woff') format('woff');
-            font-weight: normal;
-            font-display: swap;
+        20% {
+          transform: rotate(-15deg);
         }
 
-        body {
-            font-family: 'OngleipKonkon';
-            font-size: 20px;
-            line-height: 1.6;
-            font-weight: 300;
-            overflow-x: hidden;
+        30% {
+          transform: rotate(10deg);
         }
 
-        section {
-            height: 100vh;
+        40% {
+          transform: rotate(-10deg);
         }
 
-        .horizontal-sliders {
-            display: flex;
-            align-items: center;
-            flex-wrap: no-wrap;
-            height: 100vh !important;
-            min-height: 100vh !important;
-            max-height: 100vh !important;
-            width: 500%;
-            background: url(./img/bg.jpg);
-            background-position: center center;
-            overflow-x: hidden;
-            border: none;
-            z-index: 2;
-            position: relative;
+        50% {
+          transform: rotate(5deg);
         }
 
-        .obj-bx .obj01 {
-            position: absolute;
-            top: 84%;
-            left: 12%;
-            transform: translate(-50%, -50%);
+        60% {
+          transform: rotate(-5deg);
         }
 
-        .obj-bx .obj02 {
-            position: absolute;
-            top: 30%;
-            left: 4%;
-            transform: translate(-50%, -50%);
+        70% {
+          transform: rotate(0deg);
         }
 
-        .obj-bx .obj03 {
-            width: 200px;
-            position: absolute;
-            top: 10%;
-            left: 15%;
-            transform: translate(-50%, -50%);
-            filter: invert(0%) sepia(100%) saturate(0%) hue-rotate(21deg) brightness(97%) contrast(103%);
+        100% {
+          transform: rotate(0deg);
         }
-
-        .horizontal-sliders .item-slide {
-            width: 350px;
-            min-width: 350px;
-        }
-
-        .horizontal-sliders .item-text {
-            border: none;
-            display: flex;
-            align-items: center;
-            margin-left: 15vw;
-            margin-right: 10vw;
-            width: 500px;
-            position: relative;
-        }
-
-        .horizontal-sliders .item-text .obj {
-            position: absolute;
-            top: -15%;
-            left: 15%;
-            transform: translate(-50%, -50%);
-        }
-
-        .horizontal-sliders .item-text dl {
-            z-index: 1;
-        }
-
-        .horizontal-sliders .item-text dl dt {
-            font-size: 60px;
-            font-family: 'HsSaemaul';
-            line-height: 1;
-            margin-bottom: 30px;
-        }
-
-        .horizontal-sliders .item-text dl dd {}
-
-        .horizontal-sliders .item-text dl .btn-git {}
-
-
-        .horizontal-sliders .item-card {
-            position: relative;
-            will-change: transform;
-            margin-right: 150px;
-        }
-
-        .horizontal-sliders .item-card.active .item-inner {
-            transform-origin: 50% 0%;
-            animation-name: shake;
-            animation-duration: 1.5s;
-            animation-iteration-count: 1;
-        }
-
-        .horizontal-sliders .item-card .deco {
-            position: absolute;
-            top: -30px;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 80px;
-            z-index: 1;
-        }
-
-        .horizontal-sliders .item-card .item-inner {
-            width: 100%;
-            height: 550px;
-            background: #fff;
-            box-shadow: 0 10px 6px -6px #777;
-            border-radius: 5px;
-            padding: 3% 3% 0 3%;
-        }
-
-        .horizontal-sliders .item-card .item-inner .thumb {
-            height: 400px;
-            overflow: hidden;
-            box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 10px inset;
-            background-position: center center;
-            cursor: pointer;
-            transition: 0.4s;
-            background-size: 120%;
-        }
-
-        .horizontal-sliders .item-card:hover .item-inner .thumb {
-            background-size: 130%;
-        }
-
-
-        .horizontal-sliders .item-card:nth-child(odd) {
-            margin-top: -100px;
-        }
-
-        .horizontal-sliders .item-card {
-            margin-top: 100px;
-        }
-
-        .horizontal-sliders .item-card .item-inner .txt-bx {
-            margin-top: 20px;
-            padding: 0 10px;
-            box-sizing: border-box;
-        }
-
-        .horizontal-sliders .item-card .item-inner .txt-bx h6 {
-            font-size: 16px;
-        }
-
-        .horizontal-sliders .item-card .item-inner .txt-bx a {
-            width: 100px;
-            display: block;
-            text-decoration: none;
-            color: #000;
-            position: relative;
-            /* float: right; */
-            margin-top: 10px;
-        }
-
-        .horizontal-sliders .item-card .item-inner .txt-bx a span {
-            display: block;
-            position: absolute;
-            top: 55%;
-            left: 55%;
-            transform: translate(-50%, -50%);
-            font-size: 15px;
-            white-space: nowrap;
-        }
-
-        .horizontal-sliders .item-card .item-inner .txt-bx a img {
-            width: 100%;
-            display: block;
-            filter: invert(18%) sepia(19%) saturate(6%) hue-rotate(74deg) brightness(98%) contrast(94%);
-        }
-
-        .horizontal-sliders .item-card .txt-bx p {
-            position: relative;
-            z-index: 1;
-        }
-
-        .horizontal-sliders .item-card .txt-bx p::after {
-            content: '';
-            background: linear-gradient(to bottom, transparent 55%, #f8cd2fb7 55%, #f8cd2fb7);
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 30px;
-            z-index: -1;
-            width: 0;
-            transition: 0.5s;
-        }
-
-        .horizontal-sliders .item-card:hover .txt-bx p::after {
-            width: 100%;
-        }
-
-        .horizontal-sliders .item-card:hover .txt-bx a img {
-            filter: invert(84%) sepia(88%) saturate(6201%) hue-rotate(325deg) brightness(95%) contrast(106%);
-        }
-
-        .sec02 {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        @keyframes shake {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            10% {
-                transform: rotate(15deg);
-            }
-
-            20% {
-                transform: rotate(-15deg);
-            }
-
-            30% {
-                transform: rotate(10deg);
-            }
-
-            40% {
-                transform: rotate(-10deg);
-            }
-
-            50% {
-                transform: rotate(5deg);
-            }
-
-            60% {
-                transform: rotate(-5deg);
-            }
-
-            70% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(0deg);
-            }
-        }
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="container">
-        <section class="sec01 horizontal-sliders">
-            <!-- <div class="obj-bx">
+      <section class="sec01 horizontal-sliders">
+        <!-- <div class="obj-bx">
                 <dotlottie-wc class="obj obj01" src="https://lottie.host/c1e3a44b-1236-41cd-9eba-4a8995f98d3e/tj1y5gD9kM.lottie" style="width: 300px;height: 300px" speed="1" autoplay
                     loop></dotlottie-wc>
             </div> -->
-            <div class="item-slide item-text">
-                <dotlottie-wc class="obj" src="https://lottie.host/12e9a891-68e9-4d69-8d3c-714da7fddd1e/taM0TMD7in.lottie" style="width: 300px;height: 300px" speed="1" autoplay loop></dotlottie-wc>
-                <dl>
-                    <dt>
-                        구성원의 작은 습관이 모여<br>
-                        매일 더 성장하는 삼구
-                    </dt>
-                    <dd>
-                        작은 습관이 하루를 바꾸고, 변화된 하루가 더 나은 내일을 만듭니다. 삼구는 이러한 믿음을 바탕으로 움직입니다. 구성원들이 매일 쌓아가는 작은 습관들이 모여 성장할 때, 삼구 역시 매일 더 나은 모습으로 거듭납니다. 삼구의 내일에는 늘 삼구인이 함께합니다.
-                    </dd>
-                </dl>
-            </div>  
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main01.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+        <div class="item-slide item-text">
+          <dotlottie-wc class="obj" src="https://lottie.host/12e9a891-68e9-4d69-8d3c-714da7fddd1e/taM0TMD7in.lottie" style="width: 300px; height: 300px" speed="1" autoplay loop></dotlottie-wc>
+          <dl>
+            <dt>포트폴리오</dt>
+            <dd>
+              주로
+              <span>웹진 사이트</span>
+              를 제작했고, 모든 웹진은
+              <span>마크업 100%</span>
+              ,
+              <span>디자인 20%(서브페이지)</span>
+              참여 했으며, 제작기간은
+              <span>7일~10일</span>
+              입니다.
+            </dd>
+          </dl>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project01.jpg)"></div>
+            <div class="txt-bx">
+              <h6>TS 한국교통안전공단</h6>
+              <p>TS 매거진 웹진</p>
+              <a href="http://tsmagazine.co.kr/page/vol86/index.html" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main02.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project02.jpg)"></div>
+            <div class="txt-bx">
+              <h6>사학연금</h6>
+              <p>사학연금 웹진</p>
+              <a href="https://www.tpwebzine.com" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main03.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project03.jpg)"></div>
+            <div class="txt-bx">
+              <h6>서울시의회</h6>
+              <p>서울의회 웹진</p>
+              <a href="https://webzine.smc.seoul.kr" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main04.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project04.jpg)"></div>
+            <div class="txt-bx">
+              <h6>삼구아이앤씨</h6>
+              <p>삼구애 웹진</p>
+              <a href="https://webzine.samkoo.com/page/vol25/index.html" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main05.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project05.jpg)"></div>
+            <div class="txt-bx">
+              <h6>도로교통공단</h6>
+              <p>신호등 웹진</p>
+              <a href="https://webzineplace.co.kr/remote/service/koroad/vol90/index.php" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main06.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project06.jpg)"></div>
+            <div class="txt-bx">
+              <h6>한국철도공사</h6>
+              <p>레일로 웹진</p>
+              <a href="https://www.korailstory.com" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-            <div class="item-slide item-card metapoker-card">
-                <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프">
-                <div class="item-inner">
-                    <div class="thumb" style=" background-image: url(https://webzine.samkoo.com/page/vol21/img/main07.jpg);"></div>
-                    <div class="txt-bx">
-                        <h6>VIP MEMBER 1</h6>
-                        <p>
-                            최상의 안전, 최고의 예방
-                            고수의 해법이 빛나다
-                        </p>
-                        <a href="#">
-                            <span>보러가기</span>
-                            <img src="./img/cycle.png" alt="">
-                        </a>
-                    </div>
-                </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project07.jpg)"></div>
+            <div class="txt-bx">
+              <h6>방위사업청</h6>
+              <p>청아람 웹진</p>
+              <a href="https://dapa-magazine.kr/page/vol146/index.html" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
             </div>
-        </section>
-        <section class="sec02">
-            <h1>섹션02</h1>
-        </section>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project08.jpg)"></div>
+            <div class="txt-bx">
+              <h6>한국중부발전</h6>
+              <p>중부가족 웹진</p>
+              <a href="https://komipo-webzine.co.kr/page/vol25/index.html" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project09.jpg)"></div>
+            <div class="txt-bx">
+              <h6>공무원연금공단</h6>
+              <p>공무원연금 웹진</p>
+              <a href="https://webzineplace.co.kr/remote/service/geps/vol01" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+        <div class="item-slide item-card">
+          <img class="deco" src="https://gwanho.s3.ap-northeast-2.amazonaws.com/images/visuals/tape.png" alt="테이프" />
+          <div class="item-inner">
+            <div class="thumb" style="background-image: url(https://mavin-resume.s3.ap-southeast-2.amazonaws.com/project10.jpg)"></div>
+            <div class="txt-bx">
+              <h6>용산구청</h6>
+              <p>용산구소식 웹진</p>
+              <a href="https://yongsannews.com" target="_blank">
+                <span>보러가기</span>
+                <img src="./img/cycle.png" alt="" />
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="sec02">
+        <h1>섹션02</h1>
+      </section>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.5/gsap.min.js"></script>
@@ -425,44 +456,42 @@
     <script src="https://unpkg.com/@lottiefiles/dotlottie-wc@0.6.2/dist/dotlottie-wc.js" type="module"></script>
 
     <script>
-        gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+      gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
-        const horizontal = $('.horizontal-sliders');
-        const slideItems = gsap.utils.toArray('.item-slide');
-        const slideCards = document.querySelectorAll('.horizontal-sliders .item-card');
-        ScrollTrigger.config({ autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load' });
+      const horizontal = $('.horizontal-sliders')
+      const slideItems = gsap.utils.toArray('.item-slide')
+      const slideCards = document.querySelectorAll('.horizontal-sliders .item-card')
+      ScrollTrigger.config({ autoRefreshEvents: 'visibilitychange,DOMContentLoaded,load' })
 
-        // gsap scroll trigger
-        let scrollTween = gsap.to(slideItems, {
-            xPercent: -150 * (slideItems.length - 1),
-            ease: 'none',
-            scrollTrigger: {
-                start: 'top top',
-                trigger: horizontal,
-                anticipatePin: 1,
-                invalidateOnRefresh: true,
-                pin: true,
-                pinSpacing: true,
-                scrub: 1,
-                // markers: true,
-                end: '+=3000',
-            },
-        });
+      // gsap scroll trigger
+      let scrollTween = gsap.to(slideItems, {
+        xPercent: -150 * (slideItems.length - 1),
+        ease: 'none',
+        scrollTrigger: {
+          start: 'top top',
+          trigger: horizontal,
+          anticipatePin: 1,
+          invalidateOnRefresh: true,
+          pin: true,
+          pinSpacing: true,
+          scrub: 1,
+          // markers: true,
+          end: '+=3000',
+        },
+      })
 
-        // gsap trigger card animation
-        slideCards.forEach((element) => {
-            gsap.to(element, {
-                scrollTrigger: {
-                    trigger: element,
-                    containerAnimation: scrollTween,
-                    start: 'left center',
-                    toggleActions: 'play none none none',
-                    toggleClass: 'active',
-                },
-            });
-        });
-
+      // gsap trigger card animation
+      slideCards.forEach((element) => {
+        gsap.to(element, {
+          scrollTrigger: {
+            trigger: element,
+            containerAnimation: scrollTween,
+            start: 'left center',
+            toggleActions: 'play none none none',
+            toggleClass: 'active',
+          },
+        })
+      })
     </script>
-</body>
-
+  </body>
 </html>
